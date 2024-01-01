@@ -1,0 +1,23 @@
+<!-- home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block header %}My Search Engine{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form method="get" action="{% url 'search_results' %}">
+            {% csrf_token %}
+
+            <label for="{{ form.search_query.id_for_label }}">Search Query:</label>
+            {{ form.search_query }}
+
+            <label for="{{ form.search_model.id_for_label }}">Search Model:</label>
+            {{ form.search_model }}
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+{% endblock %}
